@@ -1,0 +1,6 @@
+id,burst_time,priority,arrival_time,turnaround_time,cpu_time_acquired,waiting_time
+1,10,-17,0,0,0,0
+2,10,16,0,0,0,0
+3,6,18,0,0,0,0
+4,10,12,0,0,0,0
+5,9,8,0,0,0,0

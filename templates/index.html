@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scheduler</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+     <div class="main-container">
+
+            <form method="POST" action="/" class="form1" >
+
+                <input type="hidden" name="action" value="randomProcesses">
+                <div class="inputForm">
+                    <div>
+                        <label for="numberProcesses">Number of processes</label>
+                        <input type="number" name="numberProcesses" min="1" required>
+                    </div>
+    
+                    <div>
+                        <label for="maxBurst">Max burst</label>
+                        <input type="number" name="maxBurst" min="1" required>
+                    </div>
+    
+                    <div>
+                        <label for="minBurst">Min burst</label>
+                        <input type="number" name="minBurst" min="1" required>
+                    </div>
+    
+                    <div>
+                        <label for="maxArrivalTime">Max Arrival time</label>
+                        <input type="number" name="maxArrivalTime" min="0" required>
+                    </div>
+
+    
+                </div>
+                <div class="algorithm_choice" id="alg">
+                    <div class="algi">
+                                        <label for="dropdown">Scheduling algorithm</label>
+                    <select id="dropdown" name="dropdown">
+                        <option value="FCFS" selected ="selected">First Come First Served </option>
+                        <option value="SJF">Shortest job first</option>
+                        <option value="Priority Scheduling">Priority scheduling</option>
+                        <option value="rr">Round Robin</option>
+                        <option value="Priority Round-Robin">Round Robin with priority</option>
+                    </select></div>
+
+                    <div id="quantumInput" style="display: none;">
+                        <div>
+                            <label for="quantum">Quantum:</label>
+                            <input type="number" id="quantum" name="quantum" min="1" value="1">
+                        </div>
+                        <div>
+                            <label for="contextSwitching">Context Switching OverHead:</label>
+                            <input type="number" id="contextSwitching" name="contextSwitching" min="0" value = "0">
+                        </div>
+
+
+                    </div>
+                </div>
+       
+                
+  
+
+                <input type="submit" value="Generate Random Processes" class="inputSubmit">
+            </form>
+
+        <div class="inputResults">
+            <div class="processTable">
+
+                <table id="csvTable">
+                    <!-- Table content will be inserted here -->
+                </table>
+                
+                <div class="pagination">
+                    <button onclick="previousPage()"><</button>
+                    <button onclick="nextPage()">></button>
+                </div>
+            </div>
+
+            <div>
+                <canvas id="scatterChart"></canvas>
+            </div>
+
+
+        </div>
+
+
+
+
+
+  <div class="timeline-container">
+    <div class="timeline"></div>
+    <div class="ruler"></div>
+
+     </div>
+
+</body>
+<script src="{{ url_for('static', filename='js/inputSection.js') }}"></script>
+<script src="{{ url_for('static', filename='js/timeline.js') }}"></script>
+<script>
+    document.getElementById("dropdown").addEventListener("change", function() {
+        var selectedValue = this.value;
+        
+        if (selectedValue === "rr" || selectedValue === "rrps") {
+            document.getElementById("quantumInput").style.display = "flex";
+            document.getElementById("alg").style.display="flex";
+
+        } else   {
+            document.getElementById("quantumInput").style.display = "none";
+            document.getElementById("quantumInput").innerHTML =  "";
+           document.getElementById("alg").style.display="block";
+
+        }
+    });
+</script>
+
+</html>
