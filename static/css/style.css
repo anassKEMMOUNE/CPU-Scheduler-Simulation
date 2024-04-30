@@ -2,6 +2,9 @@
 html, * {
   font-family: "Montserrat", sans-serif;
 }
+h1, h2,.h1{
+  text-align: center;
+}
  table {
         border-collapse: collapse;
         width: fit-content;
@@ -12,8 +15,9 @@ html, * {
         text-align: center;
         width: 120px;
     }
-    th {
+    th, #outputResults table tr:first-child {
         background-color: #f2f2f2;
+        font-weight: 700;
     }
     .pagination {
         margin-top: 10px;
@@ -52,14 +56,17 @@ html, * {
 .form1{
   background-color: #f0f0f0;
   width: 80%; 
-  margin: 40px auto;
+  margin: 40px auto 0 auto;
   padding-bottom: 1px;
 }
 .inputSubmit {
   text-align: center;
   display: block;
-  margin: 25px auto;
+  margin: 25px auto 0 auto;
   padding: 10px;
+  color:white;
+  background-color: green;
+  font-weight: 700;
 }
 .pagination button {
   padding :5px 10px;
@@ -136,6 +143,9 @@ font-size: 12px;
     width: 250px;
     height: 40px;
     padding: 0 15px;
+    background: rgb(7, 7, 160);
+    color :white;
+    font-weight: 700;
 }
 #quantumInput{
     justify-content: space-around;
@@ -150,4 +160,52 @@ font-size: 12px;
 }
 .algorithm_choice input {
     height: 20px;
+}
+#outputResults table tr:last-child{
+display: none;
+}
+#outputResults table tr td:nth-child(6){
+  display: none;
+}
+#outputResults table{
+  margin: auto;
+  margin-bottom: 30px;
+  }
+
+
+#reset{
+  display :flex;
+  margin-left: 90%;
+  position: relative;
+  bottom: 42px;
+  padding: 10px;
+  color: white;
+  background-color: red;
+  font-weight: 700;
+}
+
+section{
+  margin-bottom : 25px;
+}
+
+.outputCharts{
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 40px;
+
+}
+#myChart1 , #myChart2,#myChart3{
+    width : 400px !important;
+    height: 400px !important;
+
+}
+
+.statistics{
+    text-align:center   ;
+    margin-bottom: 50px;
+}
+
+
+#myPieChart{
+margin : auto;
 }

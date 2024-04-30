@@ -1,16 +1,5 @@
-function generateRandomBrightColor(i) {
-    const brightColors = [
-        'red', 'blue', 'green', 'orange', 'yellow', 'cyan', 'magenta',
-        'lime', 'pink', 'turquoise', 'gold', 'purple', 'violet', 'skyblue', 'coral',
-        'salmon', 'teal', 'lavender', 'maroon', 'olive', 'navy', 'peach', 'indigo',
-        'tomato', 'orchid', 'slateblue', 'seagreen', 'peru', 'crimson', 'darkorange'
-    ];
 
-    i =  i%30;
 
-    return brightColors[i];
-}
-    
 var currentPage = 1;
 var pageSize = 5; // Number of rows per page
 var rowsNumber;
@@ -143,7 +132,24 @@ if (!response.ok) {
 }
 console.log('CSV data saved successfully');
 displayTable(); // Refresh table after successful save
+fetch('static/js/timeline.js')
+  .then(response => response.text())
+  .then(scriptContent => eval(scriptContent));
+
+
+fetch('static/js/csvTable.js')
+  .then(response => response.text())
+  .then(scriptContent => eval(scriptContent));
+
+fetch('static/js/barcharts.js')
+  .then(response => response.text())
+  .then(scriptContent => eval(scriptContent));
+
 })
+
+
+
+
 .catch(error => {
 console.error('Error saving CSV data:', error);
 });
@@ -218,3 +224,4 @@ Chart.defaults.elements.bar.borderWidth = 4;
 
 
 displayTable(); // Initial table display
+
